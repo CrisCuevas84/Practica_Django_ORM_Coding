@@ -1,0 +1,21 @@
+$ py manage.py startapp users
+$ python manage.py makemigrations
+$ py manage.py migrate
+$ py manage.py shell
+
+>>> from users.models import *
+>>> Usuario.objects.create(nombre = "Sam", apellido = "Pakiu", email = "sam@asdf.cl", edad = 10) 
+>>> Usuario.objects.create(nombre = "Sam", apellido = "Pakiu", email = "sam@asdf.cl", edad = 10)
+>>> Usuario.objects.create(nombre = "Juca", apellido = "Gordinho", email = "juca@asdf.cl", edad = 2)
+>>> Usuario.objects.all()
+>>> Usuario.objects.first()
+>>> cambio_apellido = Usuario.objects.get(id=3) 
+>>> cambio_apellido.apellido = "Pancakes"
+>>> cambio_apellido.save()
+>>> usuario_a_eliminar = Usuario.objects.get(id=2) 
+>>> usuario_a_eliminar.delete()
+(1, {'users.Usuario': 1})
+>>> Usuario.objects.all().order_by("nombre")
+<QuerySet [<Usuario object: Chico Terry>, <Usuario object: Juca Pancakes>]>
+>>> Usuario.objects.all().order_by("-nombre")
+<QuerySet [<Usuario object: Juca Pancakes>, <Usuario object: Chico Terry>]>
