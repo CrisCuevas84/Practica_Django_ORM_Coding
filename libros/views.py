@@ -1,5 +1,8 @@
 from django.shortcuts import render, HttpResponse
+from .models import *
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hola desde app libros")
+    context = {"autores": Autor.objects.all()}		# sólo se envía todos los autores
+    return render(request, "libros/index.html", context)
+
